@@ -17,5 +17,42 @@ namespace WinFormsApp
             context.Students.Load();
             dataGridView.DataSource = context.Students.Local.ToBindingList();
         }
+
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+            FormStudent form = new(new Student());
+            DialogResult dialog = form.ShowDialog();
+            if (dialog == DialogResult.OK)
+            {
+                context.Students.Add(form.student);
+                context.SaveChanges();
+            }
+        }
+
+        private void editBtn_Click(object sender, EventArgs e)
+        {
+            Student? student = getSelectTable();
+            if (student == null) return;
+            FormStudent form = new(student);
+            DialogResult dialog = form.ShowDialog();
+            if (dialog == DialogResult.OK)
+            {
+                context.Students.Update(form.student);
+                context.SaveChanges();
+                dataGridView.Refresh();
+            }
+        }
+
+        private void delBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private Student? getSelectTable()
+        {
+            if (dataGridView.SelectedRows.Count == 0) return null;
+            Student student = (Student)dataGridView.SelectedRows[0].DataBoundItem;
+            return student;
+        }
     }
 }

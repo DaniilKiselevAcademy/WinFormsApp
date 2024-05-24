@@ -51,6 +51,7 @@
             addBtn.TabIndex = 1;
             addBtn.Text = "Добавить";
             addBtn.UseVisualStyleBackColor = true;
+            addBtn.Click += addBtn_Click;
             // 
             // editBtn
             // 
@@ -60,6 +61,7 @@
             editBtn.TabIndex = 2;
             editBtn.Text = "Редактировать";
             editBtn.UseVisualStyleBackColor = true;
+            editBtn.Click += editBtn_Click;
             // 
             // delBtn
             // 
@@ -69,6 +71,7 @@
             delBtn.TabIndex = 3;
             delBtn.Text = "Удалить";
             delBtn.UseVisualStyleBackColor = true;
+            delBtn.Click += delBtn_Click;
             // 
             // Form1
             // 
